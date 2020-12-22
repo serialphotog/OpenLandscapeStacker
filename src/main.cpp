@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
   app.setOrganizationName("serialphotog");
   app.setOrganizationDomain("serialphotog.com");
 
-  MainWindow win;
+  OLS::MainWindow win;
   win.show();
   return app.exec();
 }

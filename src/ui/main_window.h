@@ -4,14 +4,29 @@
 #include <QMainWindow>
 #include <QWidget>
 
-class MainWindow : public QMainWindow
+#define OLS_WINDOW_WIDTH 650
+#define OLS_WINDOW_HEIGHT 500
+
+namespace OLS
 {
-  Q_OBJECT
 
-  public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+  class MainWindow : public QMainWindow
+  {
+    Q_OBJECT
 
-};
+    public:
+      MainWindow(QWidget *parent = nullptr);
+      ~MainWindow();
+
+    private slots:
+      // Displays the about dialog
+      void displayAboutDlg();
+
+    private:
+      // Creates the actions for the main window
+      void createActions();
+  };
+
+}
 
 #endif
