@@ -1,5 +1,6 @@
 set(OLS_SRCS
   main.cpp
+  core/frame.cpp
   ui/main_window.cpp
   ${TS_FILES}
 )
