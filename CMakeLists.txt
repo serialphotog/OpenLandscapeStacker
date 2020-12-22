@@ -20,4 +20,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
 
 set(TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/lang/OLS_en_US.ts")
 
+# OpenCV
+find_package(OpenCV REQUIRED)
+
 add_subdirectory(src)
