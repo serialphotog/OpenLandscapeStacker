@@ -4,37 +4,37 @@
 <context>
     <name>OLS::MainWindow</name>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="13"/>
+        <location filename="../src/ui/main_window.cpp" line="28"/>
         <source>Open Landscape Stacker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="28"/>
+        <location filename="../src/ui/main_window.cpp" line="54"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="29"/>
+        <location filename="../src/ui/main_window.cpp" line="55"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="34"/>
+        <location filename="../src/ui/main_window.cpp" line="60"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="35"/>
+        <location filename="../src/ui/main_window.cpp" line="61"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="42"/>
+        <location filename="../src/ui/main_window.cpp" line="68"/>
         <source>About Open Landscape Stacker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="43"/>
+        <location filename="../src/ui/main_window.cpp" line="69"/>
         <source>A work in progress landscape stacker by Adam Thompson.</source>
         <translation type="unfinished"></translation>
     </message>

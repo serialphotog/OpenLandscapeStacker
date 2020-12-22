@@ -1,6 +1,8 @@
 set(OLS_SRCS
   main.cpp
   core/frame.cpp
+  ui/widgets/sidebar.cpp
+  ui/widgets/preview.cpp
   ui/main_window.cpp
   ${TS_FILES}
 )
