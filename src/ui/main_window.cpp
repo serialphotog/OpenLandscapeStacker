@@ -1,5 +1,6 @@
 #include "main_window.h"
 
+#include <QDebug>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -18,7 +19,7 @@ namespace OLS
     margin-top: 10px; \
     margin-bottom: 10px; \
     margin-left: 2px; \
-    margin-rigth: 2px; \
+    margin-right: 2px; \
     border-radius: 4px; \
   }";
 
@@ -31,8 +32,8 @@ namespace OLS
     // Build the main UI
     m_splitter = new QSplitter(parent);
     m_splitter->setStyleSheet(splitterStyle);
-    m_previewWidget = new OLS::Preview();
-    m_sidebarWidget = new OLS::Sidebar();
+    m_previewWidget = new OLS::Preview(this);
+    m_sidebarWidget = new OLS::Sidebar(this);
     m_splitter->addWidget(m_sidebarWidget);
     m_splitter->addWidget(m_previewWidget);
     this->setCentralWidget(m_splitter);
@@ -61,12 +62,40 @@ namespace OLS
     QAction *aboutAct = new QAction(tr("About"), this);
     connect(aboutAct, &QAction::triggered, this, &MainWindow::displayAboutDlg);
     helpMenu->addAction(aboutAct);
+
+    // Hanlde signals from the sidebar
+    connect(m_sidebarWidget, SIGNAL(darkFramesRequested()), this, 
+        SLOT(requestDarkFramesFromUser()));
+    connect(m_sidebarWidget, SIGNAL(lightFramesRequested()), this, 
+        SLOT(requestLightFramesFromUser()));
+    connect(m_sidebarWidget, SIGNAL(clearDarkFramesRequested()), this, SLOT(clearDarkFrames()));
+    connect(m_sidebarWidget, SIGNAL(clearLightFramesRequested()), this, SLOT(clearLightFrames()));
   }
 
   void MainWindow::displayAboutDlg()
   {
     QMessageBox::about(this, tr("About Open Landscape Stacker"),
       tr("A work in progress landscape stacker by Adam Thompson."));
+  }
+
+  void MainWindow::requestLightFramesFromUser() 
+  {
+    qDebug() << "Request light frames";
+  }
+
+  void MainWindow::requestDarkFramesFromUser()
+  {
+    qDebug() << "Request dark frames";
+  }
+
+  void MainWindow::clearLightFrames()
+  {
+    qDebug() << "Clear light frames";
+  }
+
+  void MainWindow::clearDarkFrames()
+  {
+    qDebug() << "Clear dark frames";
   }
 
 }

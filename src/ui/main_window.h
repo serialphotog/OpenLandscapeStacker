@@ -25,6 +25,13 @@ namespace OLS
     private slots:
       // Displays the about dialog
       void displayAboutDlg();
+    
+    public slots:
+      // Slots for dealing with context actions on tree items
+      void requestLightFramesFromUser();
+      void requestDarkFramesFromUser();
+      void clearDarkFrames();
+      void clearLightFrames();
 
     private:
       // The primary splitter

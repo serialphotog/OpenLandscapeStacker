@@ -1,8 +1,12 @@
 #ifndef __SIDEBAR_H__
 #define __SIDEBAR_H__
 
-#include <QWidget>
+#include <QPoint>
+#include <QStandardItemModel>
 #include <QTreeView>
+#include <QWidget>
+
+#include "ui/models/frame_item.h"
 
 namespace OLS
 {
@@ -15,8 +19,39 @@ namespace OLS
             explicit Sidebar(QWidget *parent = 0);
             ~Sidebar();
 
+        private slots:
+            // Handles the custom context menu for the tree view
+            void onCustomTreeContextMenuRequested(const QPoint &point);
+
+            // Slots for the tree view context menu items
+            void requestDarkFrames();
+            void requestLightFrames();
+            void clearDarkFrames();
+            void clearLightFrames();
+
+        signals:
+            // Tree item signals
+            void darkFramesRequested();
+            void lightFramesRequested();
+            void clearDarkFramesRequested();
+            void clearLightFramesRequested();
+
         private:
+            // The frames tree view
             QTreeView *m_treeView;
+
+            // The item model for the frames tree view
+            QStandardItemModel *m_treeModel;
+
+            // The root nodes for the frames tree
+            OLS::FrameItem *m_lightFramesNode;
+            OLS::FrameItem *m_darkFramesNode;
+
+            // Initializes the frames tree view
+            void initFramesTreeView();
+
+            // Builds the context menu for a root tree item
+            void buildRootTreeNodeContextMenu(int nodeTag, const QPoint &point);
     };
 
 }
