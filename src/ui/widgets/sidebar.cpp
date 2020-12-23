@@ -5,6 +5,7 @@
 #include <QMenu>
 
 #include "ui/models/frame_tree_nodes.h"
+#include "ui/main_window.h"
 
 namespace OLS 
 {
@@ -18,6 +19,9 @@ namespace OLS
         // Set the layout
         setLayout(layout);
 
+        // Register the action handlers
+        addActions(parent);
+
         // Build the frames tree view
         initFramesTreeView();
     }
@@ -28,6 +32,17 @@ namespace OLS
         delete m_lightFramesNode;
         delete m_darkFramesNode;
         delete m_treeModel;
+    }
+
+    void Sidebar::addActions(QWidget *parent)
+    {
+        OLS::MainWindow *win = (OLS::MainWindow*)parent;
+        connect(win, SIGNAL(lightFramesAdded(OLS::FrameStore*)), this, 
+            SLOT(updateLightFramesView(OLS::FrameStore*)));
+        connect(win, SIGNAL(darkFramesAdded(OLS::FrameStore*)), this,
+            SLOT(updateDarkFramesView(OLS::FrameStore*)));
+        connect(win, SIGNAL(lightFramesCleared()), this, SLOT(clearLightFramesFromView()));
+        connect(win, SIGNAL(darkFramesCleared()), this, SLOT(clearDarkFramesFromView()));
     }
 
     void Sidebar::initFramesTreeView()
@@ -105,6 +120,44 @@ namespace OLS
         menu->addAction(addFramesAct);
         menu->addAction(clearFramesAct);
         menu->exec(m_treeView->viewport()->mapToGlobal(point));
+    }
+
+    void Sidebar::updateLightFramesView(OLS::FrameStore *store)
+    {
+        // Start from a clean slate
+        m_lightFramesNode->removeRows(0, m_lightFramesNode->rowCount());
+
+        // Update the view
+        for (std::pair<std::string, OLS::Frame*> elem : *store)
+        {
+            FrameItem* item = new FrameItem(QString::fromStdString(elem.second->getFileName()));
+            item->setTag(OLS::FrameTreeNodes::NODE_STANDARD_LIGHT_FRAME_ENTRY);
+            m_lightFramesNode->appendRow(item);
+        }
+    }
+
+    void Sidebar::clearLightFramesFromView()
+    {
+        m_lightFramesNode->removeRows(0, m_lightFramesNode->rowCount());
+    }
+
+    void Sidebar::updateDarkFramesView(OLS::FrameStore *store)
+    {
+        // Start from a clean slate
+        m_darkFramesNode->removeRows(0, m_darkFramesNode->rowCount());
+
+        // Update the view
+        for (std::pair<std::string, OLS::Frame*> elem : *store)
+        {
+            FrameItem *item = new FrameItem(QString::fromStdString(elem.second->getFileName()));
+            item->setTag(OLS::FrameTreeNodes::NODE_STANDARD_DARK_FRAME_ENTRY);
+            m_darkFramesNode->appendRow(item);
+        }
+    }
+
+    void Sidebar::clearDarkFramesFromView()
+    {
+        m_darkFramesNode->removeRows(0, m_darkFramesNode->rowCount());
     }
 
     void Sidebar::requestDarkFrames()

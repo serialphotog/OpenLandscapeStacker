@@ -52,32 +52,32 @@
 <context>
     <name>OLS::Sidebar</name>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="45"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="60"/>
         <source>Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="47"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="62"/>
         <source>Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="89"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="104"/>
         <source>Add Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="90"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="105"/>
         <source>Clear All Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="97"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="112"/>
         <source>Add Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="98"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="113"/>
         <source>Clear All Light Frames</source>
         <translation type="unfinished"></translation>
     </message>

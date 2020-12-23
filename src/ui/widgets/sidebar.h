@@ -7,6 +7,7 @@
 #include <QWidget>
 
 #include "ui/models/frame_item.h"
+#include "core/frame_store.h"
 
 namespace OLS
 {
@@ -29,6 +30,12 @@ namespace OLS
             void clearDarkFrames();
             void clearLightFrames();
 
+            // Slots for updating the UI
+            void updateLightFramesView(OLS::FrameStore *store);
+            void updateDarkFramesView(OLS::FrameStore *store);
+            void clearLightFramesFromView();
+            void clearDarkFramesFromView();
+
         signals:
             // Tree item signals
             void darkFramesRequested();
@@ -46,6 +53,9 @@ namespace OLS
             // The root nodes for the frames tree
             OLS::FrameItem *m_lightFramesNode;
             OLS::FrameItem *m_darkFramesNode;
+
+            // Adds the action handlers
+            void addActions(QWidget *parent);
 
             // Initializes the frames tree view
             void initFramesTreeView();

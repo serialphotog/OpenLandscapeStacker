@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QWidget>
 
+#include "core/frame_store.h"
 #include "core/stack_manager.h"
 #include "ui/widgets/preview.h"
 #include "ui/widgets/sidebar.h"
@@ -23,6 +24,12 @@ namespace OLS
     public:
       MainWindow(QWidget *parent = nullptr);
       ~MainWindow();
+
+    signals:
+      void lightFramesAdded(OLS::FrameStore *store);
+      void darkFramesAdded(OLS::FrameStore *store);
+      void lightFramesCleared();
+      void darkFramesCleared();
 
     private slots:
       // Displays the about dialog

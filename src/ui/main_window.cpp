@@ -124,7 +124,8 @@ namespace OLS
       m_stackManager->addLightFrame(frame);
     }
 
-    // TODO: Update the UI
+    // Emit the signal to update the sidebar UI
+    emit lightFramesAdded(m_stackManager->getLightFramesStore());
   }
 
   void MainWindow::requestDarkFramesFromUser()
@@ -136,19 +137,20 @@ namespace OLS
       m_stackManager->addDarkFrame(frame);
     }
 
-    // TODO: Update the UI
+    // Emit the singal to update the sidebar UI
+    emit darkFramesAdded(m_stackManager->getDarkFrameStore());
   }
 
   void MainWindow::clearLightFrames()
   {
     m_stackManager->clearLightFrames();
-    // TODO: Update the UI
+    emit lightFramesCleared();
   }
 
   void MainWindow::clearDarkFrames()
   {
     m_stackManager->clearDarkFrames();
-    // TODO: Update the UI
+    emit darkFramesCleared();
   }
 
 }
