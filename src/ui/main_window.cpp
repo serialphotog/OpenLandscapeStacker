@@ -1,10 +1,15 @@
 #include "main_window.h"
 
-#include <QDebug>
+#include <QFileDialog>  
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QSettings>  
+#include <QStandardPaths>
 #include <QString>
+
+#include "core/frame.h"
+#include "core/settings.h"
 
 namespace OLS
 {
@@ -29,6 +34,9 @@ namespace OLS
     setWindowTitle(tr("Open Landscape Stacker"));
     resize(OLS_WINDOW_WIDTH, OLS_WINDOW_HEIGHT);
 
+    // Initialize the stack manager
+    m_stackManager = new OLS::StackManager();
+
     // Build the main UI
     m_splitter = new QSplitter(parent);
     m_splitter->setStyleSheet(splitterStyle);
@@ -47,6 +55,7 @@ namespace OLS
     delete m_previewWidget;
     delete m_sidebarWidget;
     delete m_splitter;
+    delete m_stackManager;
   }
 
   void MainWindow::createActions() 
@@ -72,6 +81,34 @@ namespace OLS
     connect(m_sidebarWidget, SIGNAL(clearLightFramesRequested()), this, SLOT(clearLightFrames()));
   }
 
+  QStringList MainWindow::getImageFilesFromUser() const 
+  {
+    QSettings settings;
+
+    // Get the files from the user
+    QFileDialog dialog(nullptr, tr("Open Images"));
+    dialog.setDirectory(settings.value(OLS::DEFAULT_DIRECTORY_KEY, 
+      QStandardPaths::PicturesLocation).toString());
+    
+    dialog.setNameFilter(tr("Images (*.tif)"));
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if (dialog.exec())
+    {
+      // Save the directory for next time...
+      QDir currentDir;
+      settings.setValue(OLS::DEFAULT_DIRECTORY_KEY,
+        currentDir.absoluteFilePath(dialog.selectedFiles()[0]));
+      return dialog.selectedFiles();
+    }
+
+    return QStringList();
+  }
+
+  /**
+   * SLOTS
+   */
+
   void MainWindow::displayAboutDlg()
   {
     QMessageBox::about(this, tr("About Open Landscape Stacker"),
@@ -80,22 +117,38 @@ namespace OLS
 
   void MainWindow::requestLightFramesFromUser() 
   {
-    qDebug() << "Request light frames";
+    QStringList files = getImageFilesFromUser();
+    for (QString file : files)
+    {
+      OLS::Frame *frame = new OLS::Frame(file.toStdString(), OLS::FrameType::FRAME_LIGHT);
+      m_stackManager->addLightFrame(frame);
+    }
+
+    // TODO: Update the UI
   }
 
   void MainWindow::requestDarkFramesFromUser()
   {
-    qDebug() << "Request dark frames";
+    QStringList files = getImageFilesFromUser();
+    for (QString file : files)
+    {
+      OLS::Frame *frame = new OLS::Frame(file.toStdString(), OLS::FrameType::FRAME_LIGHT);
+      m_stackManager->addDarkFrame(frame);
+    }
+
+    // TODO: Update the UI
   }
 
   void MainWindow::clearLightFrames()
   {
-    qDebug() << "Clear light frames";
+    m_stackManager->clearLightFrames();
+    // TODO: Update the UI
   }
 
   void MainWindow::clearDarkFrames()
   {
-    qDebug() << "Clear dark frames";
+    m_stackManager->clearDarkFrames();
+    // TODO: Update the UI
   }
 
 }

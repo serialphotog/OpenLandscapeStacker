@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QSplitter>
+#include <QStringList>
 #include <QWidget>
 
+#include "core/stack_manager.h"
 #include "ui/widgets/preview.h"
 #include "ui/widgets/sidebar.h"
 
@@ -25,8 +27,7 @@ namespace OLS
     private slots:
       // Displays the about dialog
       void displayAboutDlg();
-    
-    public slots:
+
       // Slots for dealing with context actions on tree items
       void requestLightFramesFromUser();
       void requestDarkFramesFromUser();
@@ -34,6 +35,9 @@ namespace OLS
       void clearLightFrames();
 
     private:
+      // The stack manager instance
+      OLS::StackManager *m_stackManager;
+
       // The primary splitter
       QSplitter *m_splitter;
 
@@ -43,6 +47,9 @@ namespace OLS
 
       // Creates the actions for the main window
       void createActions();
+
+      //Requests supported image files from the user
+      QStringList getImageFilesFromUser() const;
   };
 
 }

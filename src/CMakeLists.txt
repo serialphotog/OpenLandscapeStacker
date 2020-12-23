@@ -2,6 +2,8 @@ set(OLS_SRCS
   main.cpp
   core/frame.cpp
   core/frame_store.cpp
+  core/util/filesystem.cpp
+  core/stack_manager.cpp
   ui/widgets/sidebar.cpp
   ui/widgets/preview.cpp
   ui/main_window.cpp

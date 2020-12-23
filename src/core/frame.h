@@ -1,6 +1,8 @@
 #ifndef __FRAME_H__
 #define __FRAME_H__
 
+#include <string>
+
 namespace OLS
 {
     // The various types of frames available
@@ -14,15 +16,23 @@ namespace OLS
     class Frame
     {
         public:
-            Frame(OLS::FrameType type);
+            Frame() = delete;
+            Frame(const std::string &path, OLS::FrameType type);
             ~Frame();
 
-            // Returns the type of this frame
             OLS::FrameType getType() { return m_type; }
+            std::string getFileName() const { return m_fileName; }
+            std::string getFilePath() const { return m_filePath; }
         
         private:
             // The type of this frame
             OLS::FrameType m_type;
+
+            // The path to the frame on disk
+            std::string m_filePath;
+
+            // The file name for the frame
+            std::string m_fileName;
     };
 }
 
