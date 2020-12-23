@@ -1,6 +1,7 @@
 set(OLS_SRCS
   main.cpp
   core/frame.cpp
+  core/frame_store.cpp
   ui/widgets/sidebar.cpp
   ui/widgets/preview.cpp
   ui/main_window.cpp
