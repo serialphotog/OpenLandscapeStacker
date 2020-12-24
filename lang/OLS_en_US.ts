@@ -9,62 +9,62 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="64"/>
+        <location filename="../src/ui/main_window.cpp" line="65"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="65"/>
+        <location filename="../src/ui/main_window.cpp" line="66"/>
         <source>Add &amp;Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="69"/>
+        <location filename="../src/ui/main_window.cpp" line="70"/>
         <source>Add &amp;Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="73"/>
+        <location filename="../src/ui/main_window.cpp" line="74"/>
         <source>Clear Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="77"/>
+        <location filename="../src/ui/main_window.cpp" line="78"/>
         <source>Clear Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="82"/>
+        <location filename="../src/ui/main_window.cpp" line="83"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="87"/>
+        <location filename="../src/ui/main_window.cpp" line="88"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="88"/>
+        <location filename="../src/ui/main_window.cpp" line="89"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="110"/>
+        <location filename="../src/ui/main_window.cpp" line="111"/>
         <source>Open Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="114"/>
+        <location filename="../src/ui/main_window.cpp" line="115"/>
         <source>Images (*.tif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="135"/>
+        <location filename="../src/ui/main_window.cpp" line="136"/>
         <source>About Open Landscape Stacker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="136"/>
+        <location filename="../src/ui/main_window.cpp" line="137"/>
         <source>A work in progress landscape stacker by Adam Thompson.</source>
         <translation type="unfinished"></translation>
     </message>

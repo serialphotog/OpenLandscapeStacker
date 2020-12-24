@@ -44,6 +44,7 @@ namespace OLS
     m_sidebarWidget = new OLS::Sidebar(this);
     m_splitter->addWidget(m_sidebarWidget);
     m_splitter->addWidget(m_previewWidget);
+    m_splitter->setSizes(QList<int>() << 50 << 400);
     this->setCentralWidget(m_splitter);
 
     // Set up the actions
