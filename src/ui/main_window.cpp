@@ -62,6 +62,23 @@ namespace OLS
   {
     // File menu
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
+    QAction *addLightFramesAct = new QAction(tr("Add &Light Frames"), this);
+    connect(addLightFramesAct, &QAction::triggered, this, 
+      &MainWindow::requestLightFramesFromUser);
+    fileMenu->addAction(addLightFramesAct);
+    QAction *addDarkFramesAct = new QAction(tr("Add &Dark Frames"), this);
+    connect(addDarkFramesAct, &QAction::triggered, this,
+      &MainWindow::requestDarkFramesFromUser);
+    fileMenu->addAction(addDarkFramesAct);
+    QAction *clearLightFramesAct = new QAction(tr("Clear Light Frames"), this);
+    connect(clearLightFramesAct, &QAction::triggered, this,
+      &MainWindow::clearLightFrames);
+    fileMenu->addAction(clearLightFramesAct);
+    QAction *clearDarkFramesAct = new QAction(tr("Clear Dark Frames"), this);
+    connect(clearDarkFramesAct, &QAction::triggered, this,
+      &MainWindow::clearDarkFrames);
+    fileMenu->addAction(clearDarkFramesAct);
+    fileMenu->addSeparator();
     QAction *exitAct = new QAction(tr("&Exit"), this);
     connect(exitAct, &QAction::triggered, this, &MainWindow::close);
     fileMenu->addAction(exitAct);

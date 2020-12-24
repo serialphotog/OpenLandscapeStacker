@@ -15,36 +15,56 @@
     </message>
     <message>
         <location filename="../src/ui/main_window.cpp" line="65"/>
+        <source>Add &amp;Light Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/main_window.cpp" line="69"/>
+        <source>Add &amp;Dark Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/main_window.cpp" line="73"/>
+        <source>Clear Light Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/main_window.cpp" line="77"/>
+        <source>Clear Dark Frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/main_window.cpp" line="82"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="70"/>
+        <location filename="../src/ui/main_window.cpp" line="87"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="71"/>
+        <location filename="../src/ui/main_window.cpp" line="88"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="93"/>
+        <location filename="../src/ui/main_window.cpp" line="110"/>
         <source>Open Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="97"/>
+        <location filename="../src/ui/main_window.cpp" line="114"/>
         <source>Images (*.tif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="118"/>
+        <location filename="../src/ui/main_window.cpp" line="135"/>
         <source>About Open Landscape Stacker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="119"/>
+        <location filename="../src/ui/main_window.cpp" line="136"/>
         <source>A work in progress landscape stacker by Adam Thompson.</source>
         <translation type="unfinished"></translation>
     </message>
