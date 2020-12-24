@@ -72,37 +72,47 @@
 <context>
     <name>OLS::Sidebar</name>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="61"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="25"/>
+        <source>Align</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="26"/>
+        <source>Stack</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="74"/>
         <source>Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="63"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="76"/>
         <source>Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="92"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="105"/>
         <source>Remove Frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="125"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="138"/>
         <source>Add Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="126"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="139"/>
         <source>Clear All Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="133"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="146"/>
         <source>Add Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="134"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="147"/>
         <source>Clear All Light Frames</source>
         <translation type="unfinished"></translation>
     </message>

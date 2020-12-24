@@ -1,9 +1,12 @@
 #include "sidebar.h"
 
 #include <QAction>
+#include <QGroupBox>
 #include <QHBoxLayout>
 #include <QMenu>
+#include <QPushButton>
 #include <QSignalMapper>
+#include <QVboxLayout>
 
 #include "ui/models/frame_tree_nodes.h"
 #include "ui/main_window.h"
@@ -13,9 +16,19 @@ namespace OLS
     Sidebar::Sidebar(QWidget *parent) : QWidget(parent)
     {
         // Build the UI
-        QHBoxLayout *layout = new QHBoxLayout();
+        QVBoxLayout *layout = new QVBoxLayout();
         m_treeView = new QTreeView;
         layout->addWidget(m_treeView);
+
+        QGroupBox *buttonGroup = new QGroupBox();
+        QHBoxLayout *buttonGroupLayout = new QHBoxLayout();
+        QPushButton *btnAlign = new QPushButton(tr("Align"));
+        QPushButton *btnStack = new QPushButton(tr("Stack"));
+        // TODO: Connections
+        buttonGroupLayout->addWidget(btnAlign);
+        buttonGroupLayout->addWidget(btnStack);
+        buttonGroup->setLayout(buttonGroupLayout);
+        layout->addWidget(buttonGroup);
 
         // Set the layout
         setLayout(layout);
