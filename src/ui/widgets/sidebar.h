@@ -36,12 +36,20 @@ namespace OLS
             void clearLightFramesFromView();
             void clearDarkFramesFromView();
 
+            // Slots for deleting individual frames
+            void deleteLightFrame(QObject *item);
+            void deleteDarkFrame(QObject *item);
+
         signals:
             // Tree item signals
             void darkFramesRequested();
             void lightFramesRequested();
             void clearDarkFramesRequested();
             void clearLightFramesRequested();
+
+            // Signals for deleting individual items
+            void deleteLightFrameRequested(std::string frameName);
+            void deleteDarkFrameRequested(std::string frameName);
 
         private:
             // The frames tree view

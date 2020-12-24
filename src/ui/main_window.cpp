@@ -79,6 +79,10 @@ namespace OLS
         SLOT(requestLightFramesFromUser()));
     connect(m_sidebarWidget, SIGNAL(clearDarkFramesRequested()), this, SLOT(clearDarkFrames()));
     connect(m_sidebarWidget, SIGNAL(clearLightFramesRequested()), this, SLOT(clearLightFrames()));
+    connect(m_sidebarWidget, SIGNAL(deleteLightFrameRequested(std::string)), this, 
+        SLOT(deleteDarkFrame(std::string)));
+    connect(m_sidebarWidget, SIGNAL(deleteDarkFrameRequested(std::string)), this,
+        SLOT(deleteDarkFrame(std::string)));
   }
 
   QStringList MainWindow::getImageFilesFromUser() const 
@@ -151,6 +155,16 @@ namespace OLS
   {
     m_stackManager->clearDarkFrames();
     emit darkFramesCleared();
+  }
+
+  void MainWindow::deleteLightFrame(const std::string &frameName)
+  {
+    m_stackManager->removeLightFrame(frameName);
+  }
+
+  void MainWindow::deleteDarkFrame(const std::string &frameName)
+  {
+    m_stackManager->removeDarkFrame(frameName);
   }
 
 }

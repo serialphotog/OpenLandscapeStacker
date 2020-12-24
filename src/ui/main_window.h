@@ -40,6 +40,8 @@ namespace OLS
       void requestDarkFramesFromUser();
       void clearDarkFrames();
       void clearLightFrames();
+      void deleteLightFrame(const std::string &frameName);
+      void deleteDarkFrame(const std::string &frameName);
 
     private:
       // The stack manager instance

@@ -3,6 +3,7 @@
 #include <QAction>
 #include <QHBoxLayout>
 #include <QMenu>
+#include <QSignalMapper>
 
 #include "ui/models/frame_tree_nodes.h"
 #include "ui/main_window.h"
@@ -87,6 +88,26 @@ namespace OLS
             else
             {
                 // This is an individual frame item...
+                QMenu *menu = new QMenu(m_treeView);
+                QAction *removeFrameAct = new QAction(tr("Remove Frame"), this);
+
+                QSignalMapper mapper;
+                connect(removeFrameAct, SIGNAL(triggered()), &mapper, SLOT(map()));
+                mapper.setMapping(removeFrameAct, (QObject*)item);
+
+                if (item->getTag() == OLS::FrameTreeNodes::NODE_STANDARD_LIGHT_FRAME_ENTRY)
+                {
+                   connect(&mapper, SIGNAL(mappedObject(QObject*)), this,
+                        SLOT(deleteLightFrame(QObject*)));
+                }
+                else 
+                {
+                    connect(&mapper, SIGNAL(mappedObject(QObject*)), this,
+                        SLOT(deleteDarkFrame(QObject*)));
+                }
+
+                menu->addAction(removeFrameAct);
+                menu->exec(m_treeView->viewport()->mapToGlobal(point));
             }
         }
     }
@@ -153,6 +174,22 @@ namespace OLS
             item->setTag(OLS::FrameTreeNodes::NODE_STANDARD_DARK_FRAME_ENTRY);
             m_darkFramesNode->appendRow(item);
         }
+    }
+
+    void Sidebar::deleteLightFrame(QObject *item)
+    {
+        OLS::FrameItem *frameItem = (OLS::FrameItem*)item;
+        std::string frame = frameItem->text().toStdString();
+        m_lightFramesNode->removeRow(frameItem->row());
+        emit deleteLightFrameRequested(frame);
+    }
+
+    void Sidebar::deleteDarkFrame(QObject *item)
+    {
+        OLS::FrameItem *frameItem = (OLS::FrameItem*)item;
+        std::string frame = frameItem->text().toStdString();
+        m_darkFramesNode->removeRow(frameItem->row());
+        emit deleteDarkFrameRequested(frame);
     }
 
     void Sidebar::clearDarkFramesFromView()
