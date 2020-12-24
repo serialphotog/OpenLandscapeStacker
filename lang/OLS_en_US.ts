@@ -72,47 +72,52 @@
 <context>
     <name>OLS::Sidebar</name>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="25"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="33"/>
+        <source>Preview:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="42"/>
         <source>Align</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="26"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="43"/>
         <source>Stack</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="74"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="92"/>
         <source>Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="76"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="94"/>
         <source>Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="105"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="123"/>
         <source>Remove Frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="138"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="156"/>
         <source>Add Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="139"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="157"/>
         <source>Clear All Dark Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="146"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="164"/>
         <source>Add Light Frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/widgets/sidebar.cpp" line="147"/>
+        <location filename="../src/ui/widgets/sidebar.cpp" line="165"/>
         <source>Clear All Light Frames</source>
         <translation type="unfinished"></translation>
     </message>

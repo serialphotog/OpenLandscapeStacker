@@ -3,10 +3,14 @@
 #include <QAction>
 #include <QGroupBox>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <QMenu>
 #include <QPushButton>
 #include <QSignalMapper>
+#include <QStringList>
 #include <QVboxLayout>
+
+#include <string>
 
 #include "ui/models/frame_tree_nodes.h"
 #include "ui/main_window.h"
@@ -20,6 +24,19 @@ namespace OLS
         m_treeView = new QTreeView;
         layout->addWidget(m_treeView);
 
+        // Preview selection box
+        m_previewSelectionBox = new QComboBox(this);
+        connect(m_previewSelectionBox, SIGNAL(currentIndexChanged(const QString&)), 
+            this, SLOT(previewBoxChangeRequested(const QString&)));
+        QGroupBox *previewGroup = new QGroupBox();
+        QHBoxLayout *previewGroupLayout = new QHBoxLayout();
+        QLabel *lblPreview = new QLabel(tr("Preview:"));
+        previewGroupLayout->addWidget(lblPreview);
+        previewGroupLayout->addWidget(m_previewSelectionBox);
+        previewGroup->setLayout(previewGroupLayout);
+        layout->addWidget(previewGroup);
+
+        // Button Controls
         QGroupBox *buttonGroup = new QGroupBox();
         QHBoxLayout *buttonGroupLayout = new QHBoxLayout();
         QPushButton *btnAlign = new QPushButton(tr("Align"));
@@ -46,6 +63,7 @@ namespace OLS
         delete m_lightFramesNode;
         delete m_darkFramesNode;
         delete m_treeModel;
+        delete m_previewSelectionBox;
     }
 
     void Sidebar::addActions(QWidget *parent)
@@ -156,6 +174,15 @@ namespace OLS
         menu->exec(m_treeView->viewport()->mapToGlobal(point));
     }
 
+    void Sidebar::previewBoxChangeRequested(const QString &item)
+    {
+        if (!item.trimmed().isEmpty())
+        {
+            // Signal the change
+            emit previewFrameDidChange(item);
+        }
+    }
+
     void Sidebar::updateLightFramesView(OLS::FrameStore *store)
     {
         // Start from a clean slate
@@ -168,11 +195,48 @@ namespace OLS
             item->setTag(OLS::FrameTreeNodes::NODE_STANDARD_LIGHT_FRAME_ENTRY);
             m_lightFramesNode->appendRow(item);
         }
+
+        // Update the preview combobox
+        updatePreviewSelectionBox(store);
+    }
+
+    void Sidebar::updatePreviewSelectionBox(OLS::FrameStore *store)
+    {
+        // Convert the framestore into a QStringList
+        QStringList previewList;
+        for (std::pair<std::string, OLS::Frame*> elem : *store)
+        {
+            previewList.append(QString::fromStdString(elem.first));
+        }
+
+        // Clear the original items
+        m_previewSelectionBox->clear();
+        m_previewSelectionBox->addItems(previewList);
+    }
+
+    void Sidebar::removeSinglePreviewBoxEntry(const QString &item)
+    {
+        QStringList previewItems;
+        for (int i = 0; i < m_previewSelectionBox->count(); i++)
+        {
+            previewItems << m_previewSelectionBox->itemText(i);
+        }
+
+        int idx = previewItems.indexOf(item);
+        if (idx >= 0)
+        {
+            previewItems.remove(idx);
+            m_previewSelectionBox->clear();
+            m_previewSelectionBox->addItems(previewItems);
+        }
     }
 
     void Sidebar::clearLightFramesFromView()
     {
         m_lightFramesNode->removeRows(0, m_lightFramesNode->rowCount());
+        
+        // Clear the preview box
+        m_previewSelectionBox->clear();
     }
 
     void Sidebar::updateDarkFramesView(OLS::FrameStore *store)
@@ -194,6 +258,10 @@ namespace OLS
         OLS::FrameItem *frameItem = (OLS::FrameItem*)item;
         std::string frame = frameItem->text().toStdString();
         m_lightFramesNode->removeRow(frameItem->row());
+
+        // Remove the item from teh preview box
+        removeSinglePreviewBoxEntry(QString::fromStdString(frame));
+
         emit deleteLightFrameRequested(frame);
     }
 

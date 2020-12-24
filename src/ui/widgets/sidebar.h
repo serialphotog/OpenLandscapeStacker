@@ -1,6 +1,7 @@
 #ifndef __SIDEBAR_H__
 #define __SIDEBAR_H__
 
+#include <QComboBox>
 #include <QPoint>
 #include <QStandardItemModel>
 #include <QTreeView>
@@ -40,6 +41,9 @@ namespace OLS
             void deleteLightFrame(QObject *item);
             void deleteDarkFrame(QObject *item);
 
+            // Handles preview box change event
+            void previewBoxChangeRequested(const QString &item);
+
         signals:
             // Tree item signals
             void darkFramesRequested();
@@ -51,9 +55,15 @@ namespace OLS
             void deleteLightFrameRequested(std::string frameName);
             void deleteDarkFrameRequested(std::string frameName);
 
+            // Signals that the preview selection was changed
+            void previewFrameDidChange(const QString &frame);
+
         private:
             // The frames tree view
             QTreeView *m_treeView;
+
+            // The combobox for the preview frame selection
+            QComboBox *m_previewSelectionBox;
 
             // The item model for the frames tree view
             QStandardItemModel *m_treeModel;
@@ -70,6 +80,12 @@ namespace OLS
 
             // Builds the context menu for a root tree item
             void buildRootTreeNodeContextMenu(int nodeTag, const QPoint &point);
+
+            // Updates the preview selection combobox when new frames are added
+            void updatePreviewSelectionBox(OLS::FrameStore *store);
+
+            // Removes a single entry from the preview combobox
+            void removeSinglePreviewBoxEntry(const QString &item);
     };
 
 }
