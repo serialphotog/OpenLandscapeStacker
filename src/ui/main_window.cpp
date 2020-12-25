@@ -101,6 +101,8 @@ namespace OLS
         SLOT(deleteDarkFrame(std::string)));
     connect(m_sidebarWidget, SIGNAL(deleteDarkFrameRequested(std::string)), this,
         SLOT(deleteDarkFrame(std::string)));
+    connect(m_sidebarWidget, SIGNAL(previewFrameDidChange(const QString&)), this,
+        SLOT(handlePreviewDidChange(const QString&)));
   }
 
   QStringList MainWindow::getImageFilesFromUser() const 
@@ -183,6 +185,14 @@ namespace OLS
   void MainWindow::deleteDarkFrame(const std::string &frameName)
   {
     m_stackManager->removeDarkFrame(frameName);
+  }
+
+  void MainWindow::handlePreviewDidChange(const QString &frame)
+  {
+    // Find the frame
+    OLS::Frame *f = m_stackManager->getLightFrame(frame.toStdString());
+    QString path = QString::fromStdString(f->getFilePath());
+    m_previewWidget->updatePreviewImage(path);
   }
 
 }

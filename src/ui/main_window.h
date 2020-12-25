@@ -43,6 +43,9 @@ namespace OLS
       void deleteLightFrame(const std::string &frameName);
       void deleteDarkFrame(const std::string &frameName);
 
+      // Handles the preview selection changing
+      void handlePreviewDidChange(const QString &frame);
+
     private:
       // The stack manager instance
       OLS::StackManager *m_stackManager;

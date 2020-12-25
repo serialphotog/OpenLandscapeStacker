@@ -26,7 +26,7 @@ namespace OLS
 
         // Preview selection box
         m_previewSelectionBox = new QComboBox(this);
-        connect(m_previewSelectionBox, SIGNAL(currentIndexChanged(const QString&)), 
+        connect(m_previewSelectionBox, SIGNAL(currentTextChanged(const QString&)), 
             this, SLOT(previewBoxChangeRequested(const QString&)));
         QGroupBox *previewGroup = new QGroupBox();
         QHBoxLayout *previewGroupLayout = new QHBoxLayout();
