@@ -42,6 +42,12 @@ namespace OLS
         m_previewScrollArea->setWidget(m_imagePreview);
     }
 
+    void Preview::clear()
+    {
+        m_imagePreview->clear();
+        m_previewScrollArea->setVisible(false);
+    }
+
     void Preview::updatePreviewImage(const QString &imagePath)
     {
         cv::Mat cvimg = imread(imagePath.toStdString(), cv::IMREAD_COLOR);

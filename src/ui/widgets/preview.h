@@ -24,6 +24,9 @@ namespace OLS
             // Updates the preview image
             void updatePreviewImage(const QString &imagePath);
 
+            // Clears the preview area
+            void clear();
+
         private:
             // The scroll area that contains the image preview
             QScrollArea *m_previewScrollArea;

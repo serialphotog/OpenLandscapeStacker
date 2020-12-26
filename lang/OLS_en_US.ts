@@ -49,22 +49,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="113"/>
+        <location filename="../src/ui/main_window.cpp" line="115"/>
         <source>Open Images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="117"/>
+        <location filename="../src/ui/main_window.cpp" line="119"/>
         <source>Images (*.tif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="138"/>
+        <location filename="../src/ui/main_window.cpp" line="140"/>
         <source>About Open Landscape Stacker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ui/main_window.cpp" line="139"/>
+        <location filename="../src/ui/main_window.cpp" line="141"/>
         <source>A work in progress landscape stacker by Adam Thompson.</source>
         <translation type="unfinished"></translation>
     </message>

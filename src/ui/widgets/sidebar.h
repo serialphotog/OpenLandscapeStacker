@@ -58,6 +58,9 @@ namespace OLS
             // Signals that the preview selection was changed
             void previewFrameDidChange(const QString &frame);
 
+            // Gets fired when all light frames have been removed
+            void allLightFramesRemoved();
+
         private:
             // The frames tree view
             QTreeView *m_treeView;

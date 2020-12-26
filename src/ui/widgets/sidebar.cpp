@@ -229,6 +229,9 @@ namespace OLS
             m_previewSelectionBox->clear();
             m_previewSelectionBox->addItems(previewItems);
         }
+
+        if (previewItems.size() == 0)
+            emit allLightFramesRemoved();
     }
 
     void Sidebar::clearLightFramesFromView()
@@ -237,6 +240,7 @@ namespace OLS
         
         // Clear the preview box
         m_previewSelectionBox->clear();
+        emit allLightFramesRemoved();
     }
 
     void Sidebar::updateDarkFramesView(OLS::FrameStore *store)

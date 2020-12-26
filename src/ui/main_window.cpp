@@ -103,6 +103,8 @@ namespace OLS
         SLOT(deleteDarkFrame(std::string)));
     connect(m_sidebarWidget, SIGNAL(previewFrameDidChange(const QString&)), this,
         SLOT(handlePreviewDidChange(const QString&)));
+    connect(m_sidebarWidget, SIGNAL(allLightFramesRemoved()), this, 
+        SLOT(handleAllLightFramesRemoved()));
   }
 
   QStringList MainWindow::getImageFilesFromUser() const 
@@ -193,6 +195,11 @@ namespace OLS
     OLS::Frame *f = m_stackManager->getLightFrame(frame.toStdString());
     QString path = QString::fromStdString(f->getFilePath());
     m_previewWidget->updatePreviewImage(path);
+  }
+
+  void MainWindow::handleAllLightFramesRemoved()
+  {
+    m_previewWidget->clear();
   }
 
 }

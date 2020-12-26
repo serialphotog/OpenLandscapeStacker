@@ -46,6 +46,9 @@ namespace OLS
       // Handles the preview selection changing
       void handlePreviewDidChange(const QString &frame);
 
+      // Handles the case where all light frames have been cleared
+      void handleAllLightFramesRemoved();
+
     private:
       // The stack manager instance
       OLS::StackManager *m_stackManager;
