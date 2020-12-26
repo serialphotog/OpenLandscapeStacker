@@ -1,14 +1,13 @@
 #include "preview.h"
 
+#include <QDebug>
+
 #include <QImage>
 #include <QImageReader>
 #include <QPalette>
 #include <QPixmap>
 #include <QSizePolicy>
 #include <QVBoxLayout>
-
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
 
 namespace OLS
 {
@@ -42,6 +41,11 @@ namespace OLS
         m_previewScrollArea->setWidget(m_imagePreview);
     }
 
+    void Preview::resizeEvent(QResizeEvent *event)
+    {
+        fitWithAspect();
+    }
+
     void Preview::clear()
     {
         m_imagePreview->clear();
@@ -50,11 +54,21 @@ namespace OLS
 
     void Preview::updatePreviewImage(const QString &imagePath)
     {
-        cv::Mat cvimg = imread(imagePath.toStdString(), cv::IMREAD_COLOR);
-        QImage img = QImage((uchar*) cvimg.data, cvimg.cols, cvimg.rows, cvimg.step, 
-            QImage::Format_RGB888); 
+        m_previewImage = imread(imagePath.toStdString(), cv::IMREAD_COLOR);
         m_previewScrollArea->setVisible(true);
-        m_imagePreview->setPixmap(QPixmap::fromImage(img));
-        m_imagePreview->adjustSize();
+        fitWithAspect();
+    }
+
+    void Preview::fitWithAspect()
+    {
+        if (!m_previewImage.empty())
+        {
+            QImage img = QImage((uchar*) m_previewImage.data, m_previewImage.cols, 
+                m_previewImage.rows, m_previewImage.step, QImage::Format_RGB888); 
+            int width = m_imagePreview->width();
+            int height = m_imagePreview->height();
+            QPixmap pix = QPixmap::fromImage(img);
+            m_imagePreview->setPixmap(pix.scaled(width, height, Qt::KeepAspectRatio));
+        }
     }
 }

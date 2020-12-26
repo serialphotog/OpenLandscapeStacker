@@ -6,6 +6,9 @@
 #include <QString>
 #include <QWidget>
 
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+
 // Defines the boudns for zoom controls
 #define ZOOM_UPPER_BOUND 3.0
 #define ZOOM_LOWER_BOUND 0.111
@@ -28,6 +31,9 @@ namespace OLS
             void clear();
 
         private:
+            // The preview image
+            cv::Mat m_previewImage;
+
             // The scroll area that contains the image preview
             QScrollArea *m_previewScrollArea;
 
@@ -36,6 +42,12 @@ namespace OLS
 
             // Initializes the image preview view
             void initImagePreviewViewArea();
+
+            // Fits an image to the preview view while maintaining aspect ratio
+            void fitWithAspect();
+
+            // Handles the resize event
+            void resizeEvent(QResizeEvent *event) override;
     };
 }
 
