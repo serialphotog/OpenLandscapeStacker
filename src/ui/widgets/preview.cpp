@@ -1,13 +1,14 @@
 #include "preview.h"
 
-#include <QDebug>
-
 #include <QImage>
 #include <QImageReader>
 #include <QPalette>
 #include <QPixmap>
 #include <QSizePolicy>
 #include <QVBoxLayout>
+
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
 
 namespace OLS
 {
@@ -21,6 +22,7 @@ namespace OLS
 
         // Set the layout 
         setLayout(layout);
+        initImagePreviewViewArea();
     }
 
     Preview::~Preview()
@@ -42,12 +44,11 @@ namespace OLS
 
     void Preview::updatePreviewImage(const QString &imagePath)
     {
-        QImageReader reader(imagePath);
-        // TODO: Scaling...
+        cv::Mat cvimg = imread(imagePath.toStdString(), cv::IMREAD_COLOR);
+        QImage img = QImage((uchar*) cvimg.data, cvimg.cols, cvimg.rows, cvimg.step, 
+            QImage::Format_RGB888); 
         m_previewScrollArea->setVisible(true);
-        QImage img = reader.read();
-        qDebug() << reader.errorString();
-        m_imagePreview->setPixmap(QPixmap::fromImageReader(&reader));
+        m_imagePreview->setPixmap(QPixmap::fromImage(img));
         m_imagePreview->adjustSize();
     }
 }
